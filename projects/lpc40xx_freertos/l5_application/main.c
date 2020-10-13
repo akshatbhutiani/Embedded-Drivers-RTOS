@@ -14,14 +14,41 @@ static void create_uart_task(void);
 static void blink_task(void *params);
 static void uart_task(void *params);
 
+static void task_one(void *params);
+static void task_two(void *params);
+
 int main(void) {
   create_blinky_tasks();
   create_uart_task();
-
+  
   puts("Starting RTOS");
+  
+  xTaskCreate(task_one, "Task_One", 4096 / sizeof(void *), NULL, 1, NULL);
+  xTaskCreate(task_two, "Task_Two", 4096 / sizeof(void *), NULL, 2, NULL);
+
+  /* xTaskCreate(task_one, "Task_One", 4096 / sizeof(void *), NULL, 1, NULL);
+     xTaskCreate(task_two, "Task_Two", 4096 / sizeof(void *), NULL, 1, NULL);  For same priority */
+  
+   /* xTaskCreate(task_one, "Task_One", 4096 / sizeof(void *), NULL, 2, NULL);
+     xTaskCreate(task_two, "Task_Two", 4096 / sizeof(void *), NULL, 1, NULL);  For higher priority to 1 and lower priority to 2nd task */
+
   vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
 
   return 0;
+}
+
+static void task_one(void *params) {
+  while (true) {
+    fprintf(stderr, "AAAAAAAAAAAA");
+    vTaskDelay(100);
+  }
+}
+
+static void task_two(void *params) {
+  while (true) {
+    fprintf(stderr, "bbbbbbbbbbbb");
+     vTaskDelay(100);
+  }
 }
 
 static void create_blinky_tasks(void) {
