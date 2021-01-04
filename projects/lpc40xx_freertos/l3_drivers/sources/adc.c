@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdio.h>
 
 #include "adc.h"
 
@@ -49,5 +50,53 @@ uint16_t adc__get_adc_value(adc_channel_e channel_num) {
     result = (LPC_ADC->GDR >> 4) & twelve_bits; // 12bits - B15:B4
   }
 
+  return result;
+}
+
+void adc__enable_burst_mode(void) {
+  adc__initialize();
+  LPC_ADC->CR &= ~((1U << 24) | (1 << 25) | (1 << 26)); // clear the start bits before initializing burst mode
+}
+
+uint16_t getoutput(uint8_t number) {
+  uint16_t result = 0;
+  const uint16_t output_mask = 0x0FFF; // to get 12 bit output
+  const uint32_t adc_conversion_complete = (1U << 31);
+  if (number == ADC__CHANNEL_2) {
+    while (!(LPC_ADC->DR[2] & adc_conversion_complete)) { // Wait till conversion is complete
+      ;
+    }
+
+    result = ((LPC_ADC->DR[2] >> 4) & output_mask);
+    return result;
+  }
+
+  if (number == ADC__CHANNEL_4) {
+    while (!(LPC_ADC->DR[4] & adc_conversion_complete)) { // Wait till conversion is complete
+      ;
+    }
+
+    result = ((LPC_ADC->DR[4] >> 4) & output_mask);
+    return result;
+  }
+
+  if (number == ADC__CHANNEL_5) {
+    while (!(LPC_ADC->DR[5] & adc_conversion_complete)) { // Wait till conversion is complete
+      ;
+    }
+
+    result = ((LPC_ADC->DR[5] >> 4) & output_mask);
+    return result;
+  }
+}
+
+uint16_t adc__get_channel_reading_with_burst_mode(uint8_t channel_number) {
+  const uint32_t channel_mask = 0xFF; // channel mask to clear input pins
+  const uint32_t start_conversion = (1U << 24);
+  LPC_ADC->CR &= ~(channel_mask);
+  LPC_ADC->CR |= (1U << 16); // Enable burst mode
+  LPC_ADC->CR |= ((1 << channel_number) | start_conversion);
+
+  uint16_t result = getoutput(channel_number);
   return result;
 }
