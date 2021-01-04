@@ -1,7 +1,11 @@
 #include <stdio.h>
 
 #include "FreeRTOS.h"
+#include "lpc40xx.h"
+#include "semphr.h"
 #include "task.h"
+
+#include "lpc_peripherals.h"
 
 #include "board_io.h"
 #include "common_macros.h"
@@ -9,16 +13,72 @@
 #include "periodic_scheduler.h"
 #include "sj2_cli.h"
 
+#include "gpio_isr.h"
+
 static void create_blinky_tasks(void);
 static void create_uart_task(void);
 static void blink_task(void *params);
 static void uart_task(void *params);
 
+void pin29_isr(void) { fprintf(stderr, "\nPin 29 rising interrupt received"); }
+
+void pin30_isr(void) { fprintf(stderr, "\nPin 30 falling interrupt received"); }
+
+// static SemaphoreHandle_t switch_pressed_signal;
+
+/*void gpio_interrupt(void) {
+  LPC_GPIOINT->IO0IntClr |= (1U << 30);       // Clear the interrupt
+  fprintf(stderr, "\nInside ISR for Part 1"); // print inside the interrupt
+  xSemaphoreGiveFromISR(switch_pressed_signal, NULL);
+} */
+
+/* void sleep_on_sem_task(void *params) {
+  while (1) {
+    if (xSemaphoreTake(switch_pressed_signal, 1000)) {
+      fprintf(stderr, "\nTaken resource from semaphore for part 1");
+    }
+  }
+} */
+
 int main(void) {
-  create_blinky_tasks();
+  // create_blinky_tasks();
   create_uart_task();
 
+  LPC_GPIO0->DIR &= ~(1 << 29);
+  LPC_GPIO0->DIR &= ~(1 << 30);
+
+  gpio0__attach_interrupt(30, GPIO_INTERRUPT_RISING_EDGE, pin30_isr);
+  gpio0__attach_interrupt(29, GPIO_INTERRUPT_FALLING_EDGE, pin29_isr);
+
+  lpc_peripheral__enable_interrupt(LPC_PERIPHERAL__GPIO, gpio0__interrupt_dispatcher, NULL);
+
+  // Part 1:
+  //  switch_pressed_signal = xSemaphoreCreateBinary(); // create binary semaphore
+  // Part 0:
+  // const uint32_t sw1 = (1 << 30);
+
+  // LPC_GPIO0->DIR &= ~sw1;        // set switch as input;
+  // LPC_IOCON->P0_29 |= (1 << 3);  // enable pulldown registers
+  // LPC_GPIOINT->IO0IntEnF |= sw1; // configure falling edge interrupt
+
+  //  const uint32_t led18 = (1U << 18);
+  //  LPC_GPIO1->DIR |= led18;
+
+  // Part 1
+  // xTaskCreate(sleep_on_sem_task, "sem", (512U * 4) / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+
   puts("Starting RTOS");
+
+  NVIC_EnableIRQ(GPIO_IRQn);
+
+  // Part 0
+  /*while (1) {
+      delay__ms(500);
+      LPC_GPIO1->SET = led18;
+      delay__ms(500);
+      LPC_GPIO1->CLR = led18;
+      delay__ms(500);
+    }*/
   vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
 
   return 0;
