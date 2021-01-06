@@ -1,0 +1,532 @@
+-------------------------------------------------------------------------------
+peripherals_init(): Low level startup
+WARNING: SD card could not be mounted
+
+I2C:Starting transfer with device address: 0x02
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x04
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x06
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x08
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x0A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x0C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x0E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x10
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x12
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x14
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x16
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x18
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x1A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x1C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x1E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x20
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x22
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x24
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x26
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x28
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x2A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x2C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x2E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x30
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x32
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x34
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x36
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x38
+I2C:  HW State: 0x08
+I2C:  HW State: 0x18
+I2C:  Finished with state: 0x00
+I2C slave detected at address: 0x38
+I2C:Starting transfer with device address: 0x3A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x3C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x3E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x40
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x42
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x44
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x46
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x48
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x4A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x4C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x4E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x50
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x52
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x54
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x56
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x58
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x5A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x5C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x5E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x60
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x62
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x64
+I2C:  HW State: 0x08
+I2C:  HW State: 0x18
+I2C:  Finished with state: 0x00
+I2C slave detected at address: 0x64
+I2C:Starting transfer with device address: 0x66
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x68
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x6A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x6C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x6E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x70
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x72
+I2C:  HW State: 0x08
+I2C:  HW State: 0x18
+I2C:  Finished with state: 0x00
+I2C slave detected at address: 0x72
+I2C:Starting transfer with device address: 0x74
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x76
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x78
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x7A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x7C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x7E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x80
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x82
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x84
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x86
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x88
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x8A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x8C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x8E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x90
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x92
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x94
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x96
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x98
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x9A
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x9C
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x9E
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xA0
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xA2
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xA4
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xA6
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xA8
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xAA
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xAC
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xAE
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xB0
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xB2
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xB4
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xB6
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xB8
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xBA
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xBC
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xBE
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xC0
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xC2
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xC4
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xC6
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xC8
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xCA
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xCC
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xCE
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xD0
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xD2
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xD4
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xD6
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xD8
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xDA
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xDC
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xDE
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xE0
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xE2
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xE4
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xE6
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xE8
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xEA
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xEC
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xEE
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xF0
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xF2
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xF4
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xF6
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xF8
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xFA
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xFC
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0xFE
+I2C:  HW State: 0x08
+I2C:  HW State: 0x20
+I2C:  Finished with state: 0x20
+I2C:Starting transfer with device address: 0x38
+I2C:  HW State: 0x08
+I2C:  HW State: 0x18
+I2C:  HW State: 0x28
+I2C:  HW State: 0x28
+I2C:  Finished with state: 0x00
+I2C:Starting transfer with device address: 0x39
+I2C:  HW State: 0x08
+I2C:  HW State: 0x18
+I2C:  HW State: 0x28
+I2C:  HW State: 0x10
+I2C:  HW State: 0x40
+I2C:  HW State: 0x58
+I2C:  Finished with state: 0x00
+
+entry_point(): Entering main()
+Starting RTOS
