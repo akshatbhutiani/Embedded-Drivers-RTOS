@@ -1,6 +1,12 @@
+
+// #define PART1
+// #define PART2
+
+#define PART3
 #include <stdio.h>
 
 #include "FreeRTOS.h"
+#include "queue.h"
 #include "task.h"
 
 #include "board_io.h"
@@ -8,21 +14,150 @@
 #include "gpio.h"
 #include "periodic_scheduler.h"
 #include "sj2_cli.h"
+#include "uart_lab.h"
 
 static void create_blinky_tasks(void);
 static void create_uart_task(void);
 static void blink_task(void *params);
 static void uart_task(void *params);
 
-int main(void) {
-  create_blinky_tasks();
-  create_uart_task();
+#ifdef PART1
 
+void uart_write_task(void *parameter) {
+  char data = 'b';
+  bool temp;
+  while (1) {
+    temp = uart_lab__polled_put(UART_3, data);
+    if (temp == 1) {
+      printf("\nData Written");
+    }
+    vTaskDelay(100);
+  }
+}
+
+void uart_read_task(void *param) {
+  uint8_t output;
+  bool val;
+  while (1) {
+    val = uart_lab__polled_get(UART_3, &output);
+    printf("\nValue read is: %c", output);
+    printf("\nBoolean value: %d", val);
+    vTaskDelay(100);
+  }
+}
+
+int main(void) {
+
+  uart_lab__init(UART_3, 96, 115200);
+  xTaskCreate(uart_write_task, "write", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  xTaskCreate(uart_read_task, "read", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
   puts("Starting RTOS");
   vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
-
+  create_blinky_tasks();
+  create_uart_task();
   return 0;
 }
+
+#endif
+
+#ifdef PART2
+
+void uart_write_task(void *parameter) {
+  char data = 'b';
+  bool temp;
+
+  while (1) {
+    temp = uart_lab__polled_put(UART_3, data);
+    if (temp == 1) {
+      printf("\n Data Written");
+    }
+    vTaskDelay(100);
+  }
+}
+
+void uart_read_task(void *param) {
+  char value;
+  bool output;
+  while (1) {
+    uart__enable_receive_interrupt(UART_3);
+    output = uart_lab__get_char_from_queue(&value, 100);
+    fprintf(stderr, "\n Value of bool: %d", output);
+    fprintf(stderr, "\n Value obtained from queue: %c", value);
+  }
+}
+
+int main(void) {
+
+  uart_lab__init(UART_3, 96, 115200);
+  xTaskCreate(uart_write_task, "write", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  xTaskCreate(uart_read_task, "read", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  puts("Starting RTOS");
+  vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
+  create_blinky_tasks();
+  create_uart_task();
+  return 0;
+}
+
+#endif
+
+#ifdef PART3
+
+void board_1_sender_task(void *p) {
+  char number_as_string[16] = {0};
+
+  while (true) {
+    const int number = rand();
+    sprintf(number_as_string, "%i", number);
+
+    // Send one char at a time to the other board including terminating NULL char
+    for (int i = 0; i <= strlen(number_as_string); i++) {
+      uart_lab__polled_put(UART_3, number_as_string[i]);
+      printf("Sent: %c\n", number_as_string[i]);
+    }
+
+    printf("Sent: %i over UART to the other board\n", number);
+    vTaskDelay(3000);
+  }
+}
+
+void board_2_receiver_task(void *p) {
+  char number_as_string[16] = {0};
+  int counter = 0;
+
+  while (true) {
+    char byte = 0;
+    uart_lab__get_char_from_queue(&byte, portMAX_DELAY);
+    printf("Received: %c\n", byte);
+
+    // This is the last char, so print the number
+    if ('\0' == byte) {
+      number_as_string[counter] = '\0';
+      counter = 0;
+      printf("Received this number from the other board: %s\n", number_as_string);
+    }
+    // We have not yet received the NULL '\0' char, so buffer the data
+    else {
+      for (counter = 0; counter < 16; counter++) {
+        printf(number_as_string[counter], "%c", byte);
+      }
+    }
+  }
+}
+
+int main(void) {
+
+  uart_lab__init(UART_3, 96, 115200);
+
+  puts("Starting RTOS");
+
+  xTaskCreate(board_1_sender_task, "sender", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  xTaskCreate(board_2_receiver_task, "receiver", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
+  create_blinky_tasks();
+  create_uart_task();
+  return 0;
+}
+#endif
 
 static void create_blinky_tasks(void) {
   /**
