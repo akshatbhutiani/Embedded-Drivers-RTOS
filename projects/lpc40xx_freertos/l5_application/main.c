@@ -1,4 +1,9 @@
+// #define PART0
+// #define PART1
+#define PART2
+
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -7,6 +12,7 @@
 #include "common_macros.h"
 #include "gpio.h"
 #include "periodic_scheduler.h"
+#include "queue.h"
 #include "sj2_cli.h"
 
 static void create_blinky_tasks(void);
@@ -14,15 +20,185 @@ static void create_uart_task(void);
 static void blink_task(void *params);
 static void uart_task(void *params);
 
+#ifdef PART0
+static QueueHandle_t switch_queue;
+
+typedef enum { switch_off, switch_on } switch_e;
+
+switch_e get_switch_input_from_switch0(void) {
+  LPC_GPIO0->DIR &= ~(1 << 29); // set as input
+  if (LPC_GPIO0->PIN & (1 << 29)) {
+    return switch_on;
+  } else {
+    return switch_off;
+  }
+}
+
+void producer(void *p) {
+  while (1) {
+    const switch_e switch_value = get_switch_input_from_switch0();
+    printf("%s(), line %d, sending\n", __FUNCTION__, __LINE__);
+    if (xQueueSend(switch_queue, &switch_value, 0)) {
+      printf("%s(), line %d, sent\n", __FUNCTION__, __LINE__);
+    } else {
+      printf("\nMessage sent not sent");
+    }
+    vTaskDelay(1000);
+  }
+}
+
+void consumer(void *p) {
+  while (1) {
+    switch_e switch_value;
+    printf("%s(), line %d, receiving\n", __FUNCTION__, __LINE__);
+    if (xQueueReceive(switch_queue, &switch_value, portMAX_DELAY)) {
+      printf("%s(), line %d, received\n", __FUNCTION__, __LINE__);
+      if (switch_value == switch_off) {
+        printf("\nSwitch is off\n");
+      } else {
+        printf("\nSwitch is pressed\n");
+      }
+    } else {
+      printf("\nItem not received from queue");
+    }
+  }
+}
+
 int main(void) {
   create_blinky_tasks();
   create_uart_task();
 
+  switch_queue = xQueueCreate(1, sizeof(switch_e));
   puts("Starting RTOS");
+  puts("\n Producer is at low priority");
+  puts("\n Consumer is at high priority");
+  xTaskCreate(producer, "producer", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  xTaskCreate(consumer, "consumer", 2048 / sizeof(void *), NULL, PRIORITY_HIGH, NULL);
   vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
 
   return 0;
 }
+
+#endif
+
+#ifdef PART1
+static QueueHandle_t switch_queue;
+
+typedef enum { switch_off, switch_on } switch_e;
+
+switch_e get_switch_input_from_switch0(void) {
+  LPC_GPIO0->DIR &= ~(1 << 29); // set as input
+  if (LPC_GPIO0->PIN & (1 << 29)) {
+    return switch_on;
+  } else {
+    return switch_off;
+  }
+}
+
+void producer(void *p) {
+  while (1) {
+    const switch_e switch_value = get_switch_input_from_switch0();
+    printf("%s(), line %d, sending\n", __FUNCTION__, __LINE__);
+    if (xQueueSend(switch_queue, &switch_value, 0)) {
+      printf("%s(), line %d, sent\n", __FUNCTION__, __LINE__);
+    } else {
+      printf("\nMessage sent not sent");
+    }
+    vTaskDelay(1000);
+  }
+}
+
+void consumer(void *p) {
+  while (1) {
+    switch_e switch_value;
+    printf("%s(), line %d, receiving\n", __FUNCTION__, __LINE__);
+    if (xQueueReceive(switch_queue, &switch_value, portMAX_DELAY)) {
+      printf("%s(), line %d, received\n", __FUNCTION__, __LINE__);
+      if (switch_value == switch_off) {
+        printf("\nSwitch is off\n");
+      } else {
+        printf("\nSwitch is pressed\n");
+      }
+    } else {
+      printf("\nItem not received from queue");
+    }
+  }
+}
+
+int main(void) {
+  create_blinky_tasks();
+  create_uart_task();
+
+  switch_queue = xQueueCreate(1, sizeof(switch_e));
+  puts("Starting RTOS");
+  puts("\n Producer is at high priority");
+  puts("\n Consumer is at low priority");
+  xTaskCreate(producer, "producer", 2048 / sizeof(void *), NULL, PRIORITY_HIGH, NULL);
+  xTaskCreate(consumer, "consumer", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
+
+  return 0;
+}
+#endif
+
+#ifdef PART2
+static QueueHandle_t switch_queue;
+
+typedef enum { switch_off, switch_on } switch_e;
+
+switch_e get_switch_input_from_switch0(void) {
+  LPC_GPIO0->DIR &= ~(1 << 29); // set as input
+  if (LPC_GPIO0->PIN & (1 << 29)) {
+    return switch_on;
+  } else {
+    return switch_off;
+  }
+}
+
+void producer(void *p) {
+  while (1) {
+    const switch_e switch_value = get_switch_input_from_switch0();
+    printf("%s(), line %d, sending\n", __FUNCTION__, __LINE__);
+    if (xQueueSend(switch_queue, &switch_value, 0)) {
+      printf("%s(), line %d, sent\n", __FUNCTION__, __LINE__);
+    } else {
+      printf("\nMessage sent not sent");
+    }
+    vTaskDelay(1000);
+  }
+}
+
+void consumer(void *p) {
+  while (1) {
+    switch_e switch_value;
+    printf("%s(), line %d, receiving\n", __FUNCTION__, __LINE__);
+    if (xQueueReceive(switch_queue, &switch_value, portMAX_DELAY)) {
+      printf("%s(), line %d, received\n", __FUNCTION__, __LINE__);
+      if (switch_value == switch_off) {
+        printf("\nSwitch is off\n");
+      } else {
+        printf("\nSwitch is pressed\n");
+      }
+    } else {
+      printf("\nItem not received from queue");
+    }
+  }
+}
+
+int main(void) {
+  create_blinky_tasks();
+  create_uart_task();
+
+  switch_queue = xQueueCreate(1, sizeof(switch_e));
+  puts("Starting RTOS");
+  puts("\nEqual Priority");
+  xTaskCreate(producer, "producer", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  xTaskCreate(consumer, "consumer", 2048 / sizeof(void *), NULL, PRIORITY_LOW, NULL);
+  vTaskStartScheduler(); // This function never returns unless RTOS scheduler runs out of memory and fails
+
+  return 0;
+}
+#endif
 
 static void create_blinky_tasks(void) {
   /**
